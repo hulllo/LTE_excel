@@ -18,6 +18,8 @@ class LTE_xml():
         self.soup = BeautifulSoup(contents,'xml') 
         for self.tag in self.soup.find_all('Name',text ='LTE3GPPTest_V12_4'):
             self.tag1 = self.tag.next_sibling.next_sibling
+            if self.tag1 == None:
+                continue
             self.tag2 = self.tag1.find_all('TestItemList')
             for m in self.tag2:
                 self.tag3 = m.find_all('ListContext')
@@ -43,12 +45,12 @@ class LTE_xml():
 def main():  
     global band, channel, lte_test_items, lte_items_local, aclr_local, aclr_description, aclr_condition, frq_err_condition
     band ={'lte':(
-                    '1',
+                    # '1',
                     '3', 
                     '7', 
-                    '8',
+                    # '8',
                     '20', 
-                    '38', 
+                    # '38', 
                     )}
     channel = {
                 '1':('18050', '18300', '18550'),
